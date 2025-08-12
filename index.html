@@ -330,6 +330,41 @@
       box-shadow: 0 5px 20px rgba(60,0,80,0.10);
       object-fit: cover;
     }
+
+  /* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .datos-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .datos-columns {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .datos-personales,
+  .habilidades,
+  .frase-destacada,
+  .bio {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .datos-img img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Evitar scroll horizontal */
+  body {
+    overflow-x: hidden;
+  }
+}
+
   </style>
 </head>
 <body>
