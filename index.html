@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radia Perlman - Hoja de Vida</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Corinthia:wght@400;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Zen+Dots&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+    header {
+      background-color: #3b0764;
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 {
+      font-size: 1.5em;
+      color: white;
+      font-family: 'Lato', 'Segoe UI', Arial, sans-serif;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      font-family: 'Lato', 'Segoe UI', Arial, sans-serif;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: lightpink;
+    }
+    .hero {
+      width: 100vw;           /* Ocupa todo el ancho de la ventana */
+      min-width: 100%;        /* Evita que se reduzca en pantallas grandes */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 0;
+      background-image: url('https://p4.wallpaperbetter.com/wallpaper/75/48/851/abstract-1920x1080-gradient-gradient-desktop-wallpaper-preview.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      margin-left: calc(-50vw + 50%); /* Centra el div en el viewport */
+    }
+    .hero img {
+      width: 300px;           /* Imagen más grande */
+      max-width: 80vw;        /* No se sale en pantallas pequeñas */
+      border-radius: 10px;
+      margin: 20px;
+      flex-shrink: 0;         /* La imagen no se reduce si hay poco espacio */
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards;
+    }
+    .hero img { animation-delay: 0.2s; }
+    .hero-text {
+      max-width: 500px;
+      margin: 20px;
+      flex: 1 1 300px;        /* El texto ocupa el espacio restante */
+    }
+    .hero-text h2 {
+      font-family: 'Zen Dots', cursive, sans-serif;
+      font-size: 5.5em;
+      color: #fff;
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards;
+    }
+    .hero-text h2 { animation-delay: 0.4s; }
+    .hero-text p {
+      font-family: 'Lato', Arial, sans-serif;
+      font-size: 1.5em;
+      color: #fff;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards;
+    }
+    .hero-text p { animation-delay: 0.6s; }
+    section {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards;
+    }
+    section h2 { animation-delay: 0.8s; }
+    .bio {
+      background: #e0bbff; /* Color de fondo */
+      border-radius: 10px;
+      padding: 40px 40px;
+      margin-top: 50px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+    .bio h2 {
+      font-size: 2.5em;
+      color: #3b0764;
+      font-family: 'Zen Dots', cursive, sans-serif;
+      margin-bottom: 30px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .bio p {
+      font-size: 1.15em;
+      color: #1f2937;
+      font-family: 'Lato', Arial, sans-serif;
+      margin-bottom: 15px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .card {
+      background: deeppink;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    footer {
+      background: mediumpurple;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+    .datos-personales {
+      margin-top: 40px;
+      padding: 20px 20px 20px 60px; 
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      box-sizing: border-box;
+    }
+    .datos-personales h2 {
+      font-size: 2.8em;         
+      margin-bottom: 30px;      
+      color: #3b0764;
+      font-family: 'Zen Dots', cursive, sans-serif;
+    }
+    .datos-personales p {
+      font-size: 1.35em;        
+      color: #1f2937;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+    .datos-flex {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 40px;
+    }
+    .datos-columns {
+      display: flex;
+      flex-direction: row; /* Cambia a fila horizontal */
+      flex: 2;
+      gap: 40px;
+    }
+    .columna {
+      flex: 1;
+      margin-bottom: 10px;
+    }
+    .datos-img {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .datos-img img {
+      width: 220px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    .habilidades {
+      background: #f6e9ff;
+      border-radius: 10px;
+      padding: 30px 40px;
+      margin-top: 40px;
+      width: 100vw;
+      max-width: 100vw;
+      margin-left: calc(-50vw + 50%); /* Centra el div en el viewport */
+      box-sizing: border-box;
+    }
+    .habilidades h2 {
+      font-size: 2.5em;
+      color: #3b0764;
+      font-family: 'Zen Dots', cursive, sans-serif;
+      margin-bottom: 30px;
+    }
+    .habilidades-columns {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .habilidades-col {
+      flex: 1;
+      min-width: 280px;
+    }
+    .habilidades h3 {
+      font-size: 1.3em;
+      color: #7c2fa0;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-family: 'Lato', Arial, sans-serif;
+    }
+    .habilidades p {
+      font-size: 1.15em;
+      color: #1f2937;
+      font-family: 'Lato', Arial, sans-serif;
+      margin-bottom: 15px;
+    }
+    .frase-destacada {
+      background: lightpink;
+      border-radius: 12px;
+      padding: 40px 20px;
+      margin-top: 40px;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      font-size: 2em;
+      color: #3b0764;
+      font-family: 'Corinthia', cursive, sans-serif;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(124,47,160,0.07);
+    }
+    .frase-destacada h2 {
+      margin: 0;
+      font-size: 2.5em;
+      font-family: inherit;
+      color: inherit;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .datos-personales,
+    .habilidades,
+    .frase-destacada,
+    .bio {
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+      box-sizing: border-box;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .datos-personales p,
+    .datos-personales h2,
+    .habilidades p,
+    .habilidades h2,
+    .frase-destacada p,
+    .bio p,
+    .bio h2,
+    .cards .card p,
+    .cards .card h3 {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+    .imagen-destacada {
+      width: 100%;
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    .imagen-destacada img {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(60,0,80,0.10);
+      object-fit: cover;
+    }
+    #logros h2 {
+      font-size: 2.5em;
+      color: #3b0764;
+      font-family: 'Zen Dots', cursive, sans-serif;
+      margin-bottom: 30px;
+      margin-left: 20px;
+      margin-right: 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1s ease forwards;
+    }
+    #logros h2 { animation-delay: 0.8s; }
+    .imagen-final {
+      width: 100%;
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: center;
+    }
+    .imagen-final img {
+      width: 100%;
+      max-width: 600px;
+      border-radius: 16px;
+      box-shadow: 0 5px 20px rgba(60,0,80,0.10);
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>La Madre del Internet</h1>
+    <nav>
+      <a href="#datos">Datos personales</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#bio">Biografía</a>
+      <a href="#logros">Logros</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="https://www.internethalloffame.org/wp-content/uploads/2014/03/radia_perlman.jpg" alt="Radia Perlman">
+    <div class="hero-text">
+      <h2>Radia Perlman</h2>
+      <p>Inventora del Spanning Tree Protocol</p>
+    </div>
+  </section>
+
+  <section id="datos" class="datos-personales">
+    <h2>Datos personales</h2>
+    <div class="datos-flex">
+      <div class="datos-columns">
+        <div class="columna">
+          <p><strong>Nombre:</strong> Radia Joy Perlman</p>
+          <p><strong>Nacimiento:</strong> 18 de diciembre de 1951, Portsmouth - Virginia</p>
+          <p><strong>Edad:</strong> 73 años</p>
+          <p><strong>Correo:</strong> contact@radiaperlmantech.com</p>
+          <p><strong>Web:</strong> <a href="https://radiaperlmantech.com/" target="_blank" rel="noopener">https://radiaperlmantech.com/</a></p>
+        </div>
+        <div class="columna">
+          <p><strong>Educación:</strong> MIT (Licenciatura y Maestría en Matemáticas)</p>
+          <p><strong>Experiencia:</strong> DEC, BBN, Sun Microsystems</p>
+          <p><strong>Reconocimientos:</strong> National Inventors Hall of Fame</p>
+          <p><strong>Invento destacado:</strong> Spanning Tree Protocol (STP)</p>
+        </div>
+      </div>
+      <div class="datos-img">
+        <img src="https://mujeresconciencia.com/app/uploads/2020/12/TORTIS.jpg" alt="Radia Perlman" />
+      </div>
+    </div>
+  </section>
+
+   <section id="habilidades" class="habilidades">
+    <h2>Habilidades Técnicas y Cognitivas</h2>
+    <div class="habilidades-columns">
+      <div class="habilidades-col">
+        <h3>Pensamiento innovador</h3>
+        <p>
+          Revolucionó las redes de computadoras al resolver el problema de los bucles en redes con redundancia (STP), sentando las bases de las redes modernas.<br>
+          Su enfoque combinó matemáticas y pragmatismo, creando soluciones elegantes y eficientes.
+        </p>
+        <h3>Capacidad analítica</h3>
+        <p>
+          Perlman tiene una habilidad excepcional para descomponer problemas complejos en componentes manejables, como menciona en entrevistas.
+        </p>
+        <h3>Visión a largo plazo</h3>
+        <p>
+          Sus diseños (como STP o TRILL para redes más escalables) demuestran su capacidad para anticipar necesidades futuras.
+        </p>
+      </div>
+      <div class="habilidades-col">
+        <h3>Habilidades Sociales y de Comunicación</h3>
+        <p>
+          <strong>Claridad pedagógica:</strong> Es conocida por explicar conceptos técnicos complejos de manera accesible, tanto en sus libros (ej. "Interconnections") como en conferencias.<br>
+          En la entrevista de LACNIC, enfatiza la importancia de "hacer que las cosas funcionen" sobre tecnicismos abstractos.
+        </p>
+        <p>
+          <strong>Promoción de la diversidad:</strong> Perlman ha abogado por más mujeres en STEM, destacando que la creatividad en ingeniería no depende del género.
+        </p>
+        <p>
+          <strong>Colaboración interdisciplinaria:</strong> Trabajó en equipos diversos (desde MIT hasta Sun Microsystems y Intel), adaptando sus ideas a contextos prácticos.
+        </p>
+        <h3>Otras Características</h3>
+        <p>
+          <strong>Resiliencia:</strong> Cuestionó normas establecidas (como las limitaciones de Ethernet original) y persistió en mejorar estándares.<br>
+          <strong>Multidisciplinariedad:</strong> Además de redes, contribuyó a seguridad informática y algoritmos distribuidos.
+        </p>
+      </div>
+    </div>
+  </section>
+
+    <div class="frase-destacada">
+    <h2>
+      “Las redes deberían funcionar incluso si fallan”</h2>
+  </div>
+
+  <div class="imagen-destacada">
+    <img src="https://substackcdn.com/image/fetch/$s_!I8ko!,w_520,h_272,c_fill,f_auto,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa73175d5-dcb2-4f5f-a07e-a5384fb80431_2688x1792.png" alt="Radia Perlman dibujo">
+  </div>
+
+  <section id="bio" class="bio">
+    <h2>Biografía</h2>
+    <p>
+      <strong>Infancia y familia:</strong><br>
+      Nació en Portsmouth (Virginia) en 1951, pero creció en New Jersey. Sus padres eran ingenieros: su padre trabajaba con radares y su madre fue programadora y matemática.
+    </p>
+    <p>
+      <strong>Intereses tempranos:</strong><br>
+      Desde muy joven se destacó en ciencias, disfrutaba de matemáticas, música clásica (piano y trompa francesa), escritura y composición.
+    </p>
+    <p>
+      <strong>Educación y primeros pasos:</strong><br>
+      En secundaria participó en una clase de programación en el Stevens Institute of Technology. En el MIT descubrió su pasión por la programación, trabajando como parte del equipo del Logo Lab y desarrollando el sistema educativo para niños llamado TORTIS.
+    </p>
+  </section>
+
+  <section id="logros">
+    <h2>Logros y Reconocimientos</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Inventora de STP</h3>
+        <p>
+          Inventó el Spanning Tree Protocol (STP) en DEC, lo que permitió transformar Ethernet en una tecnología capaz de soportar redes masivas.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Desarrollo de TRILL</h3>
+        <p>
+          Lideró el desarrollo del TRILL (Transparent Interconnection of Lots of Links) para superar limitaciones de STP, mejorando la estabilidad y el uso eficiente de redes mediante IS-IS como protocolo de enrutamiento.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Seguridad en Redes</h3>
+        <p>
+          Contribuyó significativamente en seguridad de redes: modelos de confianza para infraestructuras PKI, revocación de certificados, criptografía, prevención de DDoS, y protocolos distribuidos tolerantes a ataques.<br>
+        </p>
+      </div>
+      <div class="card">
+        <h3>Patentes y Premios</h3>
+        <p>
+          Cuenta con más de 100 patentes emitidas.<br>
+          Ha recibido numerosos premios, entre ellos:<br>
+          Lifetime Achievement Awards de USENIX (2006) y SIGCOMM (2010).
+        </p>
+      </div>
+      <div class="card">
+        <h3>Reconocimientos y Distinciones</h3>
+        <p>
+          Anita Borg Women of Vision Award (2005).<br>
+          Reconocida por su influencia como una de las personas más importantes por Data Communications (1992 y 1997).<br>
+          Doctorado honorario del Royal Institute of Technology (2000).
+        </p>
+      </div>
+      <div class="card">
+        <h3>Miembro y Honores</h3>
+        <p>
+          Miembro de la National Academy of Engineering (2019).<br>
+          Inducción al Internet Hall of Fame (2014) y al National Inventors Hall of Fame (2016).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="imagen-final">
+    <img src="https://tn.com.ar/resizer/v2/radia-perlman-tambien-es-miembro-del-salon-de-la-fama-de-los-inventores-imagen-gentileza-national-inventors-hall-of-fame-NALSR7NYBJBI5MIELDBKK4GNE4.png?auth=98522013d0bef0bc457244f7b33ec9efd0e7721b94486e603c7bd245e2939d27&width=767" alt="Radia Perlman National Inventors Hall of Fame">
+  </div>
+  
+  <footer>
+    Yareth Londoño - 230241004 Ing. Sistemas</h2>
+  </footer></p>
+
+</body>
+</html>
